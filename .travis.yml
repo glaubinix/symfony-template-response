@@ -6,15 +6,9 @@ php:
   - hhvm
 
 install:
-  composer install  --no-interaction --prefer-dist
+  - composer install  --no-interaction --prefer-dist
 
 script:
-  composer validate
-  ./vendor/bin/phpunit
-  ./vendor/bin/php-cs-fixer fix . --dry-run -v --level=psr2
-
-cache:
-  directories:
-    - $HOME/.composer/
-
- sudo: false
+  - composer validate
+  - ./vendor/bin/phpunit
+  - ./vendor/bin/php-cs-fixer fix . --dry-run -v --level=psr2
