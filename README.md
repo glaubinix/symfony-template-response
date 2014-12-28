@@ -1,6 +1,9 @@
 silex-template-response
 =======================
 
+Build status: [![Build Status](https://travis-ci.org/glaubinix/silex-template-response.png?branch=master)](https://travis-ci.org/glaubinix/silex-template-response)
+
+
 Using the TemplateResponse will help you to build Controllers which are not tightly coupled to a certain Framework. In the case of Symfony/Silex this mostly means not injecting the ServiceContainer/Application to your Controllers.
 
 Installation
