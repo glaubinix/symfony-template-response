@@ -1,5 +1,6 @@
 {
     "name": "glaubinix/silex-template-response",
+    "description": "Silex twig template response",
     "license": "MIT",
     "authors": [
         {
