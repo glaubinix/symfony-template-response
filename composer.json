@@ -7,5 +7,15 @@
             "email": "stephan.vock@gmail.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {"Glaubinix\\TemplateResponse\\": "src/"}
+    },
+    "require": {
+        "silex/silex": "~1.2",
+        "twig/twig": "~1.16"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "@stable",
+        "phpunit/phpunit": "@stable"
+    }
 }
