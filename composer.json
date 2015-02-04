@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "@stable",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "silex/silex": "~1.2"
     }
 }

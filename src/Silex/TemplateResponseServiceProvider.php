@@ -1,20 +1,22 @@
 <?php
 
-namespace Glaubinix\TemplateResponse;
+namespace Glaubinix\TemplateResponse\Silex;
 
+use Glaubinix\TemplateResponse\TemplateResponseListener;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 class TemplateResponseServiceProvider implements ServiceProviderInterface
 {
     /**
      * @param Application $app
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function register(Application $app)
     {
+        $app['template_response.listener'] = $app->share(function (Application $app) {
+            return new TemplateResponseListener($app['templating']);
+        });
     }
 
     /**
@@ -22,10 +24,6 @@ class TemplateResponseServiceProvider implements ServiceProviderInterface
      */
     public function boot(Application $app)
     {
-        $app->after(function (Request $request, Response $response) use ($app) {
-            if ($response instanceof TemplateResponse) {
-                $response->render($app['twig']);
-            }
-        });
+        $app->on(KernelEvents::RESPONSE, [$app['template_response.listener'], 'onKernelResponse']);
     }
 }

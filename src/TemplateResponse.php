@@ -3,7 +3,7 @@
 namespace Glaubinix\TemplateResponse;
 
 use Symfony\Component\HttpFoundation\Response;
-use Twig_Environment;
+use Symfony\Component\Templating\EngineInterface;
 
 class TemplateResponse extends Response
 {
@@ -32,10 +32,10 @@ class TemplateResponse extends Response
     }
 
     /**
-     * @param Twig_Environment $twig
+     * @param EngineInterface $engine
      */
-    public function render(Twig_Environment $twig)
+    public function render(EngineInterface $engine)
     {
-        $this->setContent($twig->render($this->template, $this->context));
+        $this->setContent($engine->render($this->template, $this->context));
     }
 }

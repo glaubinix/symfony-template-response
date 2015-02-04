@@ -12,17 +12,17 @@ class TemplateResponseTest extends \PHPUnit_Framework_TestCase
         $context = [];
         $response = new TemplateResponse($template, $context);
 
-        $twig = $this->getMock('\Twig_Environment');
+        $engine = $this->getMock('Symfony\Component\Templating\EngineInterface');
 
         $content = 'context';
 
-        $twig
+        $engine
             ->expects($this->once())
             ->method('render')
             ->with($this->equalTo($template), $this->equalTo($context))
             ->will($this->returnValue($content));
 
-        $response->render($twig);
+        $response->render($engine);
 
         $this->assertEquals($content, $response->getContent());
     }
