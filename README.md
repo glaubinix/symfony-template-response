@@ -9,8 +9,8 @@ Using the TemplateResponse will help you to build Controllers which are not tigh
 Installation
 ------------
 
-The easiest way to install this library is to use [Composer](http://getcomposer.org/)
-Add the package "glaubinix/symfony-template-response" to your composer.json
+The easiest way to install this library is to use [Composer](http://getcomposer.org/).
+Add the package "glaubinix/symfony-template-response" to your composer.json.
 
 ```json
 {
