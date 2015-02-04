@@ -1,2 +1,2 @@
-silex-template-response
+symfony-template-response
 =======================
