@@ -39,9 +39,9 @@ If you are using silex make sure the templating Engine is registered then regist
 
 ````php
 // In a Provider define the templating engine
-$app['templating'] = $app->share(function(Application $app) {
+$app['templating'] = function(Container $app) {
     return new Symfony\Bridge\Twig\TwigEngine($app['twig'], new \Symfony\Component\Templating\TemplateNameParser());
-});
+};
 
 // Register the provider
 $app->register(new Glaubinix\TemplateResponse\Silex\TemplateResponseServiceProvider());

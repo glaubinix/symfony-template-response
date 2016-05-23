@@ -3,27 +3,25 @@
 namespace Glaubinix\TemplateResponse\Silex;
 
 use Glaubinix\TemplateResponse\TemplateResponseListener;
-use Silex\Application;
-use Silex\ServiceProviderInterface;
-use Symfony\Component\HttpKernel\KernelEvents;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
+use Silex\Api\EventListenerProviderInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class TemplateResponseServiceProvider implements ServiceProviderInterface
+class TemplateResponseServiceProvider implements ServiceProviderInterface, EventListenerProviderInterface
 {
     /**
-     * @param Application $app
+     * @param Container $pimple
      */
-    public function register(Application $app)
+    public function register(Container $pimple)
     {
-        $app['template_response.listener'] = $app->share(function (Application $app) {
-            return new TemplateResponseListener($app['templating']);
-        });
+        $pimple['template_response.listener'] = function (Container $pimple) {
+            return new TemplateResponseListener($pimple['templating']);
+        };
     }
 
-    /**
-     * @param Application $app
-     */
-    public function boot(Application $app)
+    public function subscribe(Container $app, EventDispatcherInterface $dispatcher)
     {
-        $app->on(KernelEvents::RESPONSE, [$app['template_response.listener'], 'onKernelResponse']);
+        $dispatcher->addSubscriber($app['template_response.listener']);
     }
 }
