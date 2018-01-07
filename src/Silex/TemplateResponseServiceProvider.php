@@ -10,9 +10,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class TemplateResponseServiceProvider implements ServiceProviderInterface, EventListenerProviderInterface
 {
-    /**
-     * @param Container $pimple
-     */
     public function register(Container $pimple)
     {
         $pimple['template_response.listener'] = function (Container $pimple) {

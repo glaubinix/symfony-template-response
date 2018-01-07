@@ -1,7 +1,6 @@
 language: php
 php:
-  - 5.6
-  - 7.0
+  - 7.2
 
 install:
   - composer install  --no-interaction --prefer-dist
@@ -14,7 +13,7 @@ cache:
 script:
   - composer validate
   - ./vendor/bin/phpunit
-  - ./vendor/bin/php-cs-fixer fix . --dry-run -v --level=psr2
+  - ./vendor/bin/php-cs-fixer fix . --dry-run -v --rules=@PSR2
 
 branches:
   only:

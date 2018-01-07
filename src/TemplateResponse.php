@@ -7,14 +7,10 @@ use Symfony\Component\Templating\EngineInterface;
 
 class TemplateResponse extends Response
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $template;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $context;
 
     /**
@@ -31,9 +27,6 @@ class TemplateResponse extends Response
         parent::__construct('', $status, $headers);
     }
 
-    /**
-     * @param EngineInterface $engine
-     */
     public function render(EngineInterface $engine)
     {
         $this->setContent($engine->render($this->template, $this->context));

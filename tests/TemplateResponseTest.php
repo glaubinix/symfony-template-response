@@ -3,8 +3,10 @@
 namespace Glaubinix\Test\TemplateResponse;
 
 use Glaubinix\TemplateResponse\TemplateResponse;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Templating\EngineInterface;
 
-class TemplateResponseTest extends \PHPUnit_Framework_TestCase
+class TemplateResponseTest extends TestCase
 {
     public function testRender()
     {
@@ -12,7 +14,7 @@ class TemplateResponseTest extends \PHPUnit_Framework_TestCase
         $context = [];
         $response = new TemplateResponse($template, $context);
 
-        $engine = $this->getMock('Symfony\Component\Templating\EngineInterface');
+        $engine = $this->getMockBuilder(EngineInterface::class)->getMock();
 
         $content = 'context';
 

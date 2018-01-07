@@ -9,22 +9,14 @@ use Symfony\Component\Templating\EngineInterface;
 
 class TemplateResponseListener implements EventSubscriberInterface
 {
-    /**
-     * @var EngineInterface
-     */
+    /** @var EngineInterface */
     private $engine;
 
-    /**
-     * @param EngineInterface $engine
-     */
     public function __construct(EngineInterface $engine)
     {
         $this->engine = $engine;
     }
 
-    /**
-     * @param FilterResponseEvent $event
-     */
     public function onKernelResponse(FilterResponseEvent $event)
     {
         $response = $event->getResponse();

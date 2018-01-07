@@ -12,12 +12,12 @@
         "psr-4": {"Glaubinix\\TemplateResponse\\": "src/"}
     },
     "require": {
-        "symfony/http-foundation": "^2.3|^3.0",
-        "symfony/templating": "^2.3|^3.0"
+        "symfony/http-foundation": "^2.3|^3.0|^4.0",
+        "symfony/templating": "^2.3|^3.0|^4.0"
     },
     "require-dev": {
-        "fabpot/php-cs-fixer": "@stable",
-        "phpunit/phpunit": "@stable",
+        "fabpot/php-cs-fixer": "^2.9",
+        "phpunit/phpunit": "^6.5",
         "silex/silex": "^2.0"
     },
     "suggest": {
